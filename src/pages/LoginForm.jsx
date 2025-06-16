@@ -12,7 +12,7 @@ function LoginForm() {
     try {
       const data = await loginUser(email, password);
       console.log("Login Successful:", data);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       console.log("login Failed", err.message);
     }

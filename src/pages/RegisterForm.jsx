@@ -3,6 +3,7 @@ import { registerUser } from "../services/authService";
 import { Link } from "react-router-dom";
 
 function RegisterForm() {
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -10,7 +11,15 @@ function RegisterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await registerUser(email, password, confirmPassword);
+      const data = await registerUser(
+        username,
+        email,
+        password,
+        confirmPassword
+      );
+      const savedUser = JSON.parse(localStorage.getItem(username));
+      console.log("savedUser:", savedUser);
+      console.log("hello,", savedUser.username);
       console.log("register Successful:", data);
     } catch (err) {
       console.log("register Failed", err.message);
@@ -25,9 +34,18 @@ function RegisterForm() {
         className="flex flex-col items-center h-[70%] w-[80%]"
       >
         <input
+          id="username"
+          type="text"
+          className="bg-white h-[50px] w-[90%] pl-2 rounded-[1vh]  border-2"
+          placeholder="username"
+          value={username}
+          onChange={(e) => setUserName(e.target.value)}
+          required
+        />
+        <input
           id="email"
           type="email"
-          className="bg-white h-[50px] w-[90%] pl-2 rounded-[1vh] border-2"
+          className="bg-white h-[50px] w-[90%] pl-2 rounded-[1vh] mt-[35px] border-2"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -36,7 +54,7 @@ function RegisterForm() {
         <input
           id="password"
           type="password"
-          className="bg-white h-[50px] w-[90%] pl-2 rounded-[1vh] mt-[50px] border-2"
+          className="bg-white h-[50px] w-[90%] pl-2 rounded-[1vh] mt-[35px] border-2"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -45,7 +63,7 @@ function RegisterForm() {
         <input
           id="confirmPassword"
           type="password"
-          className="bg-white h-[50px] w-[90%] pl-2 rounded-[1vh] mt-[50px] border-2"
+          className="bg-white h-[50px] w-[90%] pl-2 rounded-[1vh] mt-[35px] border-2"
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}

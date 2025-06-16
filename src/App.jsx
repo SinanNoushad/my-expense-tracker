@@ -18,17 +18,17 @@ function App() {
     <Router>
       <div className="h-screen w-screen flex justify-center items-center bg-gradient-to-tl from-purple-700 to-purple-500">
         <Routes>
-          <Route path="/" element={<LoginForm />} />
+          <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
-          <Route path="/dashboard" element={<MainLayout />}>
+          <Route path="/" element={<MainLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="wallet" element={<Wallet />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="transactions" element={<Transactions />} />
             <Route path="settings" element={<Settings />} />
           </Route>
-          <Route path="/logout" element={<Navigate to="/" />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/logout" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>
     </Router>

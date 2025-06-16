@@ -3,13 +3,13 @@ import LeftSection from "../components/LeftSection";
 import TopSection from "../components/TopSection";
 import RightSection from "../components/RightSection";
 import { Outlet } from "react-router-dom";
-function MainPage() {
+function MainLayout() {
   return (
-    <div className="h-screen w-screen flex   bg-gradient-to-tl from-purple-700 to-purple-500">
+    <div className="h-screen w-screen flex   bg-white">
       <LeftSection />
-      <div className="h-full w-[90%] flex flex-col bg-amber-600">
+      <div className="h-full w-[90%] flex flex-col">
         <TopSection />
-        <div className="h-[90%] w-[100%] flex flex-row">
+        <div className="h-[90%] w-[100%] flex flex-row ">
           <Outlet />
           <RightSection />
         </div>
@@ -18,4 +18,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default MainLayout;

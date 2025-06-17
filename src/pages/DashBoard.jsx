@@ -1,7 +1,5 @@
 import React from "react";
 import profileUrl from "../assets/profile.png";
-import blueDot from "../assets/blueDot.png";
-import redDot from "../assets/redDot.png";
 import { Link } from "react-router-dom";
 import EchartsGraph from "../features/echartsGraph";
 import IncomeExpenseChart from "../features/echartsDualGraph";

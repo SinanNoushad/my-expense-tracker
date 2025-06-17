@@ -69,7 +69,7 @@ const IncomeExpenseChart = () => {
     };
   }, []);
 
-  return <div ref={chartRef} className="w-full h-full" />;
+  return <div ref={chartRef} className="w-full h-full " />;
 };
 
 export default IncomeExpenseChart;
